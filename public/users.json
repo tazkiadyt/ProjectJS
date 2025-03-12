@@ -1,0 +1,8 @@
+{
+    "users": [
+      {"id": 1, "name": "John Wick", "email": "john.wick@example.com", "age": 28},
+      {"id": 2, "name": "Same Smith", "email": "same.smith@example.com", "age": 34},
+      {"id": 3, "name": "Sam Wilson", "email": "sam.wilson@example.com", "age": 41},
+      {"id": 4, "name": "Tony Stark", "email": "tony.stark@example.com", "age": 45}
+    ]
+  }

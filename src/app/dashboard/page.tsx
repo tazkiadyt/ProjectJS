@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
     labels: ["Active", "Inactive"],
     datasets: [
       {
-        label: "User Status",
+        label: "Users Status",
         data: [150, 50],
         backgroundColor: ["#c1121f", "#00b4d8"],
       },

@@ -1,46 +1,77 @@
-'use client'
-// components/Navbar.js
-import Link from 'next/link';
-import { useState } from 'react';
-import { FaHome, FaUser , FaDoorOpen, FaClipboardList } from 'react-icons/fa';
+"use client"
+import React, { useState } from 'react';
 
 const Navbar = () => {
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
-    <nav className="bg-gray-900 p-4 shadow-md">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-lg font-bold">MyApp</div>
-        <div className="flex space-x-6">
-          <Link href="/dashboard">
-            <span className="text-white flex items-center hover:text-gray-300 transition duration-200 cursor-pointer">
-              <FaHome className="mr-1" /> Dashboard
-            </span>
-          </Link>
-          <Link href="/room">
-            <span className="text-white flex items-center hover:text-gray-300 transition duration-200 cursor-pointer">
-              <FaClipboardList className="mr-1" /> Room
-            </span>
-          </Link>
-          <Link href="/user">
-            <span className="text-white flex items-center hover:text-gray-300 transition duration-200 cursor-pointer">
-              <FaUser  className="mr-1" /> User
-            </span>
-          </Link>
-          <div className="relative">
-            <button
-              onClick={() => setIsBookingOpen(!isBookingOpen)}
-              className="text-white flex items-center hover:text-gray-300 transition duration-200 cursor-pointer"
-            >
-              <FaDoorOpen className="mr-1" /> Transaksi
-            </button>
-            {isBookingOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                <Link href="/transaksi/booking">
-                  <span className="block px-4 py-2 text-gray-800 hover:bg-gray-200 transition duration-200 cursor-pointer">Booking</span>
-                </Link>
+    <nav className="bg-orange-500">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <span className="text-white font-bold text-xl">MyApp</span>
+            </div>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {/* Menu Items */}
+                <a
+                  href="/dashboard"
+                  className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Dashboard
+                </a>
+                <a
+                  href="/room"
+                  className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Room
+                </a>
+                <a
+                  href="/users"
+                  className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Users
+                </a>
+
+                {/* Dropdown for Transaction */}
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdown}
+                    className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium flex items-center"
+                  >
+                    Transaction
+                    <svg
+                      className="ml-2 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute z-10 mt-2 w-48 bg-white rounded-md shadow-lg">
+                      <a
+                        href="/transaction/booking"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Booking
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
